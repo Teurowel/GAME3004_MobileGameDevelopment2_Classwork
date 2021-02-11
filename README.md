@@ -1,3 +1,3 @@
-# GAME3004-W2021-Week3b
+# GAME3004-W2021-Lab2-Final
 
-Lab 1 for GAME3004
+Lab 2 for GAME3004
