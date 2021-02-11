@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerBehaviour : MonoBehaviour
 {
@@ -21,10 +22,14 @@ public class PlayerBehaviour : MonoBehaviour
     [Header("Character Controller")] 
     public CharacterController controller;
 
+    [Header("MiniMap")]
+    public GameObject miniMapBorder;
+
     // Start is called before the first frame update
     void Start()
     {
         controller = GetComponent<CharacterController>();
+        miniMapBorder.SetActive(false);
     }
 
     // Update is called once per frame
@@ -54,6 +59,12 @@ public class PlayerBehaviour : MonoBehaviour
         // gravity
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
+
+        //toggle minimap by pressing M button
+        if(Input.GetKeyDown(KeyCode.M))
+        {
+            miniMapBorder.SetActive(!miniMapBorder.activeSelf);
+        }
     }
 
     void OnDrawGizmos()
