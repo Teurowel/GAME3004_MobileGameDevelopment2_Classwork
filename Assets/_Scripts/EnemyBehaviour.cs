@@ -5,14 +5,14 @@ using UnityEngine.AI;
 
 public class EnemyBehaviour : MonoBehaviour
 {
-    public PlayerBehaviour player;
     public NavMeshAgent navMeshAgent;
+    public PlayerBehaviour player;
 
     // Start is called before the first frame update
     void Start()
     {
-        player = FindObjectOfType<PlayerBehaviour>();
         navMeshAgent = GetComponent<NavMeshAgent>();
+        player = FindObjectOfType<PlayerBehaviour>();
     }
 
     // Update is called once per frame

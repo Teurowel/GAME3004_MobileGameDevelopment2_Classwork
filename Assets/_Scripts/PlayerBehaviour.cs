@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class PlayerBehaviour : MonoBehaviour
 {
@@ -22,7 +21,7 @@ public class PlayerBehaviour : MonoBehaviour
     [Header("Character Controller")] 
     public CharacterController controller;
 
-    [Header("MiniMap")]
+    [Header("MiniMap")] 
     public GameObject miniMapBorder;
 
     // Start is called before the first frame update
@@ -60,10 +59,10 @@ public class PlayerBehaviour : MonoBehaviour
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
 
-        //toggle minimap by pressing M button
-        if(Input.GetKeyDown(KeyCode.M))
+        // Toggle MiniMap
+        if (Input.GetKeyDown(KeyCode.M))
         {
-            miniMapBorder.SetActive(!miniMapBorder.activeSelf);
+            miniMapBorder.SetActive(!miniMapBorder.activeInHierarchy);
         }
     }
 
