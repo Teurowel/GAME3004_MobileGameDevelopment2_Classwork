@@ -7,10 +7,10 @@ using UnityEngine.UI;
 public class HealthBar : MonoBehaviour
 {
     [Range(0, 100)]
-    public int currentHealth;
+    public int currentHealth = 0;
 
     [Range(1, 100)]
-    public int maximumHealth;
+    public int maximumHealth = 1;
 
     public Slider healthBarSlider;
 
@@ -23,29 +23,26 @@ public class HealthBar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.K))
+        if (Input.GetKeyDown(KeyCode.K))
         {
             TakeDamage(10);
         }
 
-        if(Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.R))
         {
             Reset();
         }
-            
     }
 
     public void Reset()
     {
         healthBarSlider.value = maximumHealth;
-
         currentHealth = maximumHealth;
     }
 
     public void TakeDamage(int damage)
     {
         healthBarSlider.value -= damage;
-
         currentHealth -= damage;
     }
 }

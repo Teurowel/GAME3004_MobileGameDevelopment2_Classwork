@@ -13,10 +13,4 @@ public class LevelController : MonoBehaviour
         navMeshSurface = GetComponent<NavMeshSurface>();
         navMeshSurface.BuildNavMesh();
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
