@@ -4,24 +4,28 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
+    [Header("Controls")]
+    [SerializeField] Joystick rightStick;
+
     public float sensitivity = 1000.0f;
     public Transform playerBody;
-
     private float XAxisRotation = 0.0f;
-
     private Vector2 mouse;
 
     // Start is called before the first frame update
     void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.lockState = CursorLockMode.Locked;
     }
 
     // Update is called once per frame
     void Update()
     {
-        mouse.x = Input.GetAxis("Mouse X") * sensitivity;
-        mouse.y = Input.GetAxis("Mouse Y") * sensitivity;
+        //mouse.x = Input.GetAxis("Mouse X") * sensitivity;
+        //mouse.y = Input.GetAxis("Mouse Y") * sensitivity;
+
+        mouse.x = rightStick.Horizontal * sensitivity;
+        mouse.y = rightStick.Vertical * sensitivity;
 
         // Look up and down
         XAxisRotation -= mouse.y;
