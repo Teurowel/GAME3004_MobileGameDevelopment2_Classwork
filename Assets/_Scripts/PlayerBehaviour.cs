@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class PlayerBehaviour : MonoBehaviour
 {
+    // Control Properties
     [Header("Controls")]
-    [SerializeField] Joystick leftStick;
+    public Joystick leftStick;
 
     // Movement Properties
     [Header("Movement")] 
@@ -30,6 +31,13 @@ public class PlayerBehaviour : MonoBehaviour
     [Header("Selection Properties")] 
     public Transform playerCamera;
     public Material selectable;
+
+    [Header("Control Panel")]
+    public GameObject controlPanel;
+
+    [Header("Player Attributes")]
+    public HealthBar healthBar;
+    public int health = 100;
 
     // Start is called before the first frame update
     void Start()
@@ -67,7 +75,6 @@ public class PlayerBehaviour : MonoBehaviour
         float x = leftStick.Horizontal;
         float z = leftStick.Vertical;
 
-
         Vector3 move = transform.right * x + transform.forward * z;
 
         controller.Move(move * maxSpeed * Time.deltaTime);
@@ -87,6 +94,8 @@ public class PlayerBehaviour : MonoBehaviour
         {
             miniMapBorder.SetActive(!miniMapBorder.activeInHierarchy);
         }
+
+        healthBar.SetHealth(health);
     }
 
     void OnDrawGizmos()
@@ -96,13 +105,18 @@ public class PlayerBehaviour : MonoBehaviour
         Gizmos.DrawLine(playerCamera.position, playerCamera.forward * 100.0f);
     }
 
-    public void OnJumpButtonPressed()
+    public void onYButtonPressed()
     {
         velocity.y = Mathf.Sqrt(jumpHeight * -2.0f * gravity);
     }
 
-    public void OnMapButtonPressed()
+    public void onBButtonPressed()
     {
         miniMapBorder.SetActive(!miniMapBorder.activeInHierarchy);
+    }
+
+    public void OnIButtonPressed()
+    {
+        controlPanel.SetActive(!controlPanel.activeInHierarchy);
     }
 }

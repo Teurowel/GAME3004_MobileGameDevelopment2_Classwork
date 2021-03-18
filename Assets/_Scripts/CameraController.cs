@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
+    // Control Properties
     [Header("Controls")]
-    [SerializeField] Joystick rightStick;
+    public Joystick rightStick;
 
     public float sensitivity = 1000.0f;
     public Transform playerBody;
+
     private float XAxisRotation = 0.0f;
+
     private Vector2 mouse;
 
     // Start is called before the first frame update
