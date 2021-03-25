@@ -5,12 +5,10 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "PlayerData", menuName = "Data/PlayerData")]
 public class PlayerDataSO : ScriptableObject
 {
-    //Player tranform properties
-    [Header("Player Transform")]
+    [Header("Player Transform Properties")]
     public Vector3 playerPosition;
     public Quaternion playerRotation;
 
-    //Player attributes
-    [Header("Player Attributes")]
+    [Header("Player Attributes")] 
     public int playerHealth;
 }

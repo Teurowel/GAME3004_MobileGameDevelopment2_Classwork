@@ -1,3 +1,3 @@
-# GAME3004-W2021-Lab5-Final
+# GAME3004-W2021-Lab6-Final
 
-Lab 5 for GAME3004
+Lab 6 for GAME3004

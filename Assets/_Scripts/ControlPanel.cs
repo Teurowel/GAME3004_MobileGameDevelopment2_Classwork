@@ -1,38 +1,37 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
-using System.Linq;
 
 public class ControlPanel : MonoBehaviour
 {
-    public List<MonoBehaviour> scripts;
     public List<NavMeshAgent> agents;
-    public bool isGamePaused = false;
-    public GameObject pauseLabelPanel;
+    public List<MonoBehaviour> scripts;
 
     public PlayerBehaviour player;
+    public bool isGamePaused = false;
+
+    public GameObject pauseLabelPanel;
+
     public PlayerDataSO playerData;
 
     // Start is called before the first frame update
     void Start()
     {
-
-
-        //Add all nav mesh agent
         agents = FindObjectsOfType<NavMeshAgent>().ToList();
-        
-        //Add all enemy behaviour
+        player = FindObjectOfType<PlayerBehaviour>();
+
         foreach (var enemy in FindObjectsOfType<EnemyBehaviour>())
         {
             scripts.Add(enemy);
         }
 
-        player = FindObjectOfType<PlayerBehaviour>();
         scripts.Add(player);
         scripts.Add(FindObjectOfType<CameraController>());
 
-        LoadFromPrefs();
+        LoadFromPlayerPreferences();
+
     }
 
     // Update is called once per frame
@@ -41,48 +40,51 @@ public class ControlPanel : MonoBehaviour
         
     }
 
-    public void OnPauseButtonToggled()
-    {
-        isGamePaused = !isGamePaused;
-        pauseLabelPanel.SetActive(isGamePaused);
-
-        foreach (var script in scripts)
-        {
-            script.enabled = !isGamePaused;
-        }
-
-        foreach(var agent in agents)
-        {
-            agent.enabled = !isGamePaused;
-        }
-    }
-
-    public void OnLoadButtonPressed()
+    public void onLoadButtonPressed()
     {
         player.controller.enabled = false;
-
         player.transform.position = playerData.playerPosition;
         player.transform.rotation = playerData.playerRotation;
         player.health = playerData.playerHealth;
-
         player.controller.enabled = true;
     }
 
-    public void OnSaveButtonPressed()
+    public void onSaveButtonPressed()
     {
         playerData.playerPosition = player.transform.position;
         playerData.playerRotation = player.transform.rotation;
         playerData.playerHealth = player.health;
 
-        SaveToPrefs();
+        SaveToPlayerPreferences();
     }
 
-    public void LoadFromPrefs()
+    public void onPauseButtonToggled()
+    {
+        isGamePaused = !isGamePaused;
+        pauseLabelPanel.SetActive(isGamePaused);
+
+        foreach (var agent in agents)
+        {
+            agent.enabled = !isGamePaused;
+        }
+
+        foreach (var script in scripts)
+        {
+            script.enabled = !isGamePaused;
+        }
+    }
+
+    public void OnApplicatonQuit()
+    {
+        SaveToPlayerPreferences();
+    }
+
+
+    public void LoadFromPlayerPreferences()
     {
         playerData.playerPosition.x = PlayerPrefs.GetFloat("playerPositionX");
         playerData.playerPosition.y = PlayerPrefs.GetFloat("playerPositionY");
         playerData.playerPosition.z = PlayerPrefs.GetFloat("playerPositionZ");
-
 
         playerData.playerRotation.x = PlayerPrefs.GetFloat("playerRotationX");
         playerData.playerRotation.y = PlayerPrefs.GetFloat("playerRotationY");
@@ -90,10 +92,9 @@ public class ControlPanel : MonoBehaviour
         playerData.playerRotation.w = PlayerPrefs.GetFloat("playerRotationW");
 
         playerData.playerHealth = PlayerPrefs.GetInt("playerHealth");
-
     }
 
-    public void SaveToPrefs()
+    public void SaveToPlayerPreferences()
     {
         PlayerPrefs.SetFloat("playerPositionX", playerData.playerPosition.x);
         PlayerPrefs.SetFloat("playerPositionY", playerData.playerPosition.y);

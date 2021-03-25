@@ -35,9 +35,10 @@ public class PlayerBehaviour : MonoBehaviour
     [Header("Control Panel")]
     public GameObject controlPanel;
 
-    [Header("Player Attributes")]
+    [Header("Player Attributes")] 
     public HealthBar healthBar;
-    public int health = 100;
+    [Range(0, 100)]
+    public int health;
 
     // Start is called before the first frame update
     void Start()
@@ -115,7 +116,7 @@ public class PlayerBehaviour : MonoBehaviour
         miniMapBorder.SetActive(!miniMapBorder.activeInHierarchy);
     }
 
-    public void OnIButtonPressed()
+    public void onIButtonPressed()
     {
         controlPanel.SetActive(!controlPanel.activeInHierarchy);
     }
