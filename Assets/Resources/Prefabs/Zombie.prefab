@@ -1112,7 +1112,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 2537873368163781027}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 0.6
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
@@ -2892,7 +2892,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2578097542136194378}
   - component: {fileID: 3395175406845595611}
-  m_Layer: 0
+  - component: {fileID: 6568794522034756406}
+  m_Layer: 9
   m_Name: Zombie_Geo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3042,6 +3043,20 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.00053450465, y: -0.06398171, z: 0.024336375}
     m_Extent: {x: 0.9598551, y: 0.90179163, z: 0.17387664}
   m_DirtyAABB: 0
+--- !u!136 &6568794522034756406
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9169394672437156463}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.4
+  m_Height: 1.8
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.85, z: 0}
 --- !u!1001 &3456864214411463640
 PrefabInstance:
   m_ObjectHideFlags: 0
