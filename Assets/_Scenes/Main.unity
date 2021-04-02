@@ -2828,6 +2828,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1921326610814218002, guid: 03362e2aab71f3a43b42b1adb49dc5d4, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0b2e3dcb2c405eb4999c8580f9c8f2e3, type: 2}
+    - target: {fileID: 1921326610814218002, guid: 03362e2aab71f3a43b42b1adb49dc5d4, type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 0}
@@ -3499,6 +3503,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1921326610814218002, guid: 03362e2aab71f3a43b42b1adb49dc5d4, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0b2e3dcb2c405eb4999c8580f9c8f2e3, type: 2}
     - target: {fileID: 6205672973111185545, guid: 03362e2aab71f3a43b42b1adb49dc5d4, type: 3}
       propertyPath: m_Name
       value: Pillar
